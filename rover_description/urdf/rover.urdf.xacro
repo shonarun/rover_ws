@@ -20,7 +20,7 @@
             <inertia 
                 ixx = "${(m / 12) * (z * z + y * y)}"
                 iyy = "${(m / 12) * (x * x + z * z)}"
-                izz = "${(m / 12) * {x * x + y * y}}"
+                izz = "${(m / 12) * (x * x + y * y)}"
                 ixy = "0" iyz = "0" ixz = "0">
             </inertia>
         </inertial>
@@ -32,7 +32,7 @@
             <inertia 
                 ixx = "${(m / 12) * (3 * r * r + l * l)}"
                 iyy = "${(m / 12) * (3 * r * r + l * l)}"
-                izz = "${(m / 2) * {r * r}"
+                izz = "${(m / 2) * (r * r)}"
                 ixy = "0" iyz = "0" ixz = "0">
             </inertia>
         </inertial>
