@@ -109,16 +109,16 @@
             <geometry>
                 <cylinder radius = "0.05" length = "0.02" />
             </geometry>
-            <origin xyz = " 0 0 ${base_height}" rpy = "0 0 0" />
+            <origin xyz = " 0 0 0" rpy = "0 0 0" />
             <material name = "green" />
         </visual>
         <collision>
             <geometry>
                 <box size = "0.1 0.1 0.02" />
             </geometry>
-            <origin xyz = " 0 0 ${base_height}" rpy = "0 0 0" />
+            <origin xyz = " 0 0 0" rpy = "0 0 0" />
         </collision>
-        <xacro:box_inertia m = "0.2" x = "0.1" y = "0.1" z = "0.02" o_xyz = "0 0 ${base_height}" o_rpy = "0 0 0" />
+        <xacro:box_inertia m = "0.2" x = "0.1" y = "0.1" z = "0.02" o_xyz = "0 0 0" o_rpy = "0 0 0" />
     </link>
 
     <gazebo>
