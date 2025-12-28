@@ -120,7 +120,7 @@
         </collision>
         <xacro:box_inertia m = "0.2" x = "0.1" y = "0.1" z = "0.02" o_xyz = "0 0 0" o_rpy = "0 0 0" />
     </link>
-    <joint name = "lidar_joint">
+    <joint name = "lidar_joint" type = "fixed">
         <parent link = "base_link" />
         <child link = "lidar_link" />
         <origin xyz = "0 0 ${base_height / 2.0}" />
