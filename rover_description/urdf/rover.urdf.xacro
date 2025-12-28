@@ -37,6 +37,7 @@
             </inertia>
         </inertial>
     </xacro:macro>
+    <!-- Wheel link Xacros -->
     <xacro:macro name = "wheel_link" params = "prefix">
         <link name = "${prefix}_wheel_link">
             <visual>
@@ -55,6 +56,7 @@
             <xacro:cylinder_inertia m = "${wheel_mass}" r = "${wheel_radius}" l = "${wheel_length}" o_xyz = "0 0 0" o_rpy = "${pi / 2.0} 0 0" />
         </link>
     </xacro:macro>
+    <!-- Wheel joint Xacros -->
     <xacro:macro name = "wheel_joint" params = "prefix x y">
         <joint name = "base_${prefix}_wheel_joint" type = "continuous">
             <parent link = "base_link" />
@@ -126,7 +128,30 @@
         <origin xyz = "0 0 ${base_height + 0.01}" />
     </joint>
 
+    <!-- Plugins -->
     <gazebo>
         <plugin filename = "gz-sim-joint-state-publisher-system" name = "gz::sim::systems::JointStatePublisher" />
+    </gazebo>
+    <gazebo reference = "lidar_link">
+        <sensor name = "lidar" type = "gpu_lidar">
+            <pose>0 0 0 0 0 0</pose>
+            <topic>scan</topic>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>720</samples>
+                        <min_angle>-1.5708</min_angle>
+                        <max_angle>1.5708</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.12</min>
+                    <max>10.0</max>
+                </range>
+            </ray>
+            <always_on>1</always_on>
+            <visualize>true</visualize>
+        </sensor>
     </gazebo>
 </robot>
