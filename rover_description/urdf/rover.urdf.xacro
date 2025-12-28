@@ -128,10 +128,22 @@
         <origin xyz = "0 0 ${base_height + 0.01}" />
     </joint>
 
-    <!-- Plugins -->
     <gazebo>
-        <plugin filename = "gz-sim-joint-state-publisher-system" name = "gz::sim::systems::JointStatePublisher" />
+        <plugin filename = "gz-sim-diff-drive-system" name = "gz::sim::systems::DiffDrive">
+            <left_joint>base_front_left_wheel_joint</left_joint>
+            <left_joint>base_back_left_wheel_joint</left_joint>
+            <right_joint>base_front_right_wheel_joint</right_joint>
+            <right_joint>base_back_right_wheel_joint</right_joint>
+            <wheel_seperation>${base_width}</wheel_seperation>
+            <wheel_radius>${wheel_radius}</wheel_radius>
+            <topic>cmd_vel</topic>
+            <odom_publish_frequency>50</odom_publish_frequency>
+            <odom_topic>odom</odom_topic>
+            <frame_id>odom</frame_id>
+            <child_frame_id>base_link</child_frame_id>
+        </plugin>
     </gazebo>
+    
     <gazebo reference = "lidar_link">
         <sensor name = "lidar" type = "gpu_lidar">
             <pose>0 0 0 0 0 0</pose>
@@ -153,5 +165,10 @@
             <always_on>1</always_on>
             <visualize>true</visualize>
         </sensor>
+    </gazebo>
+    
+    <!-- Plugins -->
+    <gazebo>
+        <plugin filename = "gz-sim-joint-state-publisher-system" name = "gz::sim::systems::JointStatePublisher" />
     </gazebo>
 </robot>
