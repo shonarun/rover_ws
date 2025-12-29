@@ -139,10 +139,8 @@
             <topic>cmd_vel</topic>
             <odom_publish_frequency>50</odom_publish_frequency>
             <odom_topic>odom</odom_topic>
-            <tf_topic>odom</tf_topic>
             <frame_id>odom</frame_id>
             <child_frame_id>base_link</child_frame_id>
-            <publish_odom_tf>true</publish_odom_tf>
         </plugin>
     </gazebo>
     
@@ -150,11 +148,11 @@
         <sensor name = "lidar" type = "gpu_lidar">
             <pose>0 0 0 0 0 0</pose>
             <topic>scan</topic>
-            <update_rate>5</update_rate>
+            <update_rate>10</update_rate>
             <ray>
                 <scan>
                     <horizontal>
-                        <samples>360</samples>
+                        <samples>720</samples>
                         <min_angle>-1.5708</min_angle>
                         <max_angle>1.5708</max_angle>
                     </horizontal>
