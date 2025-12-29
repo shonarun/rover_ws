@@ -19,4 +19,14 @@
         <param name = "use_sim_time" value = "true" />
         <param name = "config_file" value = "$(var gazebo_config_path)" />
     </node>
+    
+    <node pkg = "slam_toolbox" exec = "async_slam_toolbox_node" name = "slam_toolbox" output = "screen" args = "--ros-args --params-file $(find-pkg-share rover_bringup)/config/slam_toolbox.yaml">
+        <param name = "use_sim_time" value = "true" />
+        <!-- <param name = "params_file" value = "$(find-pkg-share rover_bringup)/config/slam_toolbox.yaml" /> -->
+    </node>
+    <node pkg = "nav2_lifecycle_manager" exec = "lifecycle_manager" name = "lifecycle_manager_slam" output = "screen">
+        <param name = "use_sim_time" value = "true" />
+        <param name = "autostart" value = "true" />
+        <param name = "node_names" value = "['slam_toolbox']" />
+    </node>
 </launch>
