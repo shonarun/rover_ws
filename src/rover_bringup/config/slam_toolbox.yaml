@@ -20,6 +20,7 @@ slam_toolbox:
     minimum_time_intervel: 0.2
     transform_timeout: 0.2
     tf_buffer_duration: 30.0
+    scan_queue_size: 50
 
     # Map update
     update_map_every_scan: true
